@@ -4,6 +4,7 @@
  */
 package mario;
 
+import audio.AudioPlayer;
 import environment.ApplicationStarter;
 
 /**
@@ -20,6 +21,7 @@ public class Mario {
     }
 
     private static void start() {
+        AudioPlayer.play("/resources/theme.wav");
         ApplicationStarter.run("Mario", new MarioEnvironment() );
     }
 }
