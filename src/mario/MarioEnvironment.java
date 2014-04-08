@@ -17,10 +17,12 @@ class MarioEnvironment extends Environment {
 
     @Override
     public void initializeEnvironment() {
+        
     }
 
     @Override
     public void timerTaskHandler() {
+        
     }
 
     @Override
