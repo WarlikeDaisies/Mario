@@ -11,5 +11,5 @@ package mario;
  * @author Adriaan D
  */
 public enum CharacterMove {
-    
+    STANDING, RUNNINGLEFT, RUNNINGRIGHT, JUMPLEFT, JUMPRIGHT, FALLINGLEFT, PUNCHING, DYING, POWERUPRECIEVE, POWERUPUSE
 }

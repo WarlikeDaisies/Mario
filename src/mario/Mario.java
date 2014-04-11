@@ -8,7 +8,7 @@ import environment.ApplicationStarter;
 
 /**
  *
- * @author Victor
+ * @author Da Beer bomb _l_ you
  */
 public class Mario {
 
