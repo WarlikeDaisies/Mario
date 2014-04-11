@@ -5,9 +5,11 @@
 package mario;
 
 import environment.Environment;
+import image.ResourceTools;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -16,10 +18,11 @@ import java.awt.event.MouseEvent;
  * @author Victor
  */
 class MarioEnvironment extends Environment {
-
+    private Image horde;
+    
     @Override
     public void initializeEnvironment() {
-        
+        horde = ResourceTools.loadImageFromResource("resources/horde.jpg");
     }
 
     @Override
@@ -44,7 +47,12 @@ class MarioEnvironment extends Environment {
 
     @Override
     public void paintEnvironment(Graphics graphics) {
-        graphics.setColor(Color.red);
+               
+        if (horde != null) {
+            graphics.drawImage(horde.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+        }
+      
+        graphics.setColor(Color.YELLOW);
         graphics.drawRect(800, 700, 350, 65);
         graphics.drawRect(800, 400, 350, 65);
         
@@ -52,8 +60,10 @@ class MarioEnvironment extends Environment {
         graphics.drawString("New Game", 860, 450);
         graphics.drawString("Instructions", 850, 750);
         
-        graphics.setColor(Color.BLUE);
+        graphics.setColor(Color.YELLOW);
         graphics.setFont(new Font("Comic Sans", Font.ITALIC, 65));
         graphics.drawString("Mapleland", 818, 200);
+ 
     }
+
 }
