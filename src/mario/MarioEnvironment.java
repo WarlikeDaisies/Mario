@@ -37,13 +37,13 @@ class MarioEnvironment extends Environment {
     @Override
     public void keyPressedHandler(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            castle = ResourceTools.loadImageFromResource("resources/Veldt006.jpg");
+            castle = ResourceTools.loadImageFromResource("resources/Veldt005.jpg");
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
             field = ResourceTools.loadImageFromResource("resources/FieldStandard.jpg");
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            hell = ResourceTools.loadImageFromResource("resources/Hell002.jpg");
+            hell = ResourceTools.loadImageFromResource("resources/Hell.tif");
 
         }
     }
