@@ -9,5 +9,5 @@ package mario;
  * @author Victor
  */
 public enum GameLevel {
-    
+    TITLESCREEN, LEVELONE, LEVELTWO, LEVELTHREE
 }
