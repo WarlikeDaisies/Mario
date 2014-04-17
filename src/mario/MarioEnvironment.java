@@ -45,12 +45,12 @@ class MarioEnvironment extends Environment {
             System.out.println("castle");
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
-            field = ResourceTools.loadImageFromResource("resources/FieldStandard.jpg");
+            field = ResourceTools.loadImageFromResource("resources/Field.jpg");
              drawField = true;
              System.out.println("field");
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            hell = ResourceTools.loadImageFromResource("resources/Hell.tif");
+            hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
             drawHell = true;
             System.out.println("hell");
         }
@@ -86,11 +86,15 @@ class MarioEnvironment extends Environment {
        
         if (drawCastle) {
             graphics.drawImage(castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-            System.out.println("drawing castle");
+//            System.out.println("drawing castle");
         }
         if (drawField) {    
             graphics.drawImage(field.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-            System.out.println("drawing field");
+//            System.out.println("drawing field");
+        }
+        if (drawHell) {
+            graphics.drawImage(hell.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+//            System.out.println("drawing hell");
         }
     }
 }
