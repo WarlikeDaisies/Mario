@@ -20,10 +20,12 @@ import java.awt.event.MouseEvent;
 class MarioEnvironment extends Environment {
 
     private Image horde;
-    private Image Castle;
+    private Image castle;
     private Image field;
     private Image hell;
     boolean drawCastle;
+    boolean drawField;
+    boolean drawHell;
     
 
     @Override
@@ -39,16 +41,19 @@ class MarioEnvironment extends Environment {
     public void keyPressedHandler(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 //            castle = ResourceTools.loadImageFromResource("resources/Veldt005.tif");
-            Castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
+            castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
             drawCastle = true;
             System.out.println("castle");
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
             field = ResourceTools.loadImageFromResource("resources/FieldStandard.jpg");
+             drawField = true;
+             System.out.println("field");
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
             hell = ResourceTools.loadImageFromResource("resources/Hell.tif");
-
+            drawHell = true;
+            System.out.println("hell");
         }
     }
 
@@ -81,7 +86,7 @@ class MarioEnvironment extends Environment {
         }
 //        if (castle != null) {
         if (drawCastle) {
-            graphics.drawImage(Castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+            graphics.drawImage(castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
             System.out.println("drawing castle");
         }
     }
