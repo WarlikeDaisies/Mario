@@ -29,16 +29,21 @@ class MarioEnvironment extends Environment {
 
     @Override
     public void initializeEnvironment() {
+      // Loading images in initialization increases efficiency and prevents image from loading 100,000 times a second
         horde = ResourceTools.loadImageFromResource("resources/horde.jpg");
+        castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
+        field = ResourceTools.loadImageFromResource("resources/Field.jpg");
+        hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
     }
 
     @Override
     public void timerTaskHandler() {
+        //create the length of a level
     }
 
     @Override
     public void keyPressedHandler(KeyEvent e) {
-       
+       //create a way to switch back to previous images and create a method to allow title screen to be returned to using the escape key
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
             drawCastle = true;
@@ -50,7 +55,7 @@ class MarioEnvironment extends Environment {
              System.out.println("field");
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
+            hell = ResourceTools.loadImageFromResource("resources/Hell.jpg"); 
             drawHell = true;
             System.out.println("hell");
         }
@@ -66,7 +71,7 @@ class MarioEnvironment extends Environment {
 
     @Override
     public void paintEnvironment(Graphics graphics) {
-
+// implement animations including character and map and shop, after break here
         if (horde != null) {
             graphics.drawImage(horde.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
 
@@ -86,12 +91,15 @@ class MarioEnvironment extends Environment {
        
         if (drawCastle) {
             graphics.drawImage(castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+            System.out.println("drawing castle");
         }
         if (drawField) {    
             graphics.drawImage(field.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+            System.out.println("drawing field");
         }
         if (drawHell) {
             graphics.drawImage(hell.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+            System.out.println("drawing hell");
         }
     }
 }
