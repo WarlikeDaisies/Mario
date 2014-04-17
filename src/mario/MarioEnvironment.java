@@ -26,7 +26,6 @@ class MarioEnvironment extends Environment {
     boolean drawCastle;
     boolean drawField;
     boolean drawHell;
-    
 
     @Override
     public void initializeEnvironment() {
@@ -39,8 +38,8 @@ class MarioEnvironment extends Environment {
 
     @Override
     public void keyPressedHandler(KeyEvent e) {
+       
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-//            castle = ResourceTools.loadImageFromResource("resources/Veldt005.tif");
             castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
             drawCastle = true;
             System.out.println("castle");
@@ -84,10 +83,14 @@ class MarioEnvironment extends Environment {
             graphics.setFont(new Font("Comic Sans", Font.ITALIC, 65));
             graphics.drawString("Mapleland", 818, 200);
         }
-//        if (castle != null) {
+       
         if (drawCastle) {
             graphics.drawImage(castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
             System.out.println("drawing castle");
+        }
+        if (drawField) {    
+            graphics.drawImage(field.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+            System.out.println("drawing field");
         }
     }
 }
