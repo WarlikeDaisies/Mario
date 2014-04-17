@@ -86,15 +86,12 @@ class MarioEnvironment extends Environment {
        
         if (drawCastle) {
             graphics.drawImage(castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-//            System.out.println("drawing castle");
         }
         if (drawField) {    
             graphics.drawImage(field.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-//            System.out.println("drawing field");
         }
         if (drawHell) {
             graphics.drawImage(hell.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-//            System.out.println("drawing hell");
         }
     }
 }
