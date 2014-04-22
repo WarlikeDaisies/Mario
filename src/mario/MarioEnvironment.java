@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
  */
 class MarioEnvironment extends Environment {
 
+    private Level level = Level.TitleScreen;
     private Image horde;
     private Image castle;
     private Image field;
@@ -27,6 +28,9 @@ class MarioEnvironment extends Environment {
     @Override
     public void initializeEnvironment() {
         horde = ResourceTools.loadImageFromResource("resources/horde.jpg");
+        castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
+        field = ResourceTools.loadImageFromResource("resources/FieldStandardFinal1.jpg");
+        hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
 
     }
 
@@ -36,15 +40,19 @@ class MarioEnvironment extends Environment {
 
     @Override
     public void keyPressedHandler(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            castle = ResourceTools.loadImageFromResource("resources/Veldt005.tif");
-        }
+        
         if (e.getKeyCode() == KeyEvent.VK_Q) {
-            field = ResourceTools.loadImageFromResource("resources/FieldStandard.jpg");
+            this.level = Level.Level1;
+
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            hell = ResourceTools.loadImageFromResource("resources/Hell002.jpg");
-
+            this.level = Level.Level2;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_E) {
+            this.level = Level.Level3;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_R) {
+            this.level = Level.TitleScreen;
         }
     }
 
@@ -59,8 +67,9 @@ class MarioEnvironment extends Environment {
     @Override
     public void paintEnvironment(Graphics graphics) {
 
-        if (horde != null) {
-            graphics.drawImage(horde.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+        if (this.level == Level.TitleScreen) {
+
+            graphics.drawImage(horde.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
 
 
             graphics.setColor(Color.YELLOW);
@@ -75,9 +84,15 @@ class MarioEnvironment extends Environment {
             graphics.setFont(new Font("Comic Sans", Font.ITALIC, 65));
             graphics.drawString("Mapleland", 818, 200);
         }
-        if (castle != null) {
-            graphics.drawImage(castle.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
+        if (this.level == Level.Level1) {
+            graphics.drawImage(castle.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
 
+        }
+        if (this.level == Level.Level2) {
+            graphics.drawImage(hell.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
+        }
+         if (this.level == Level.Level3) {
+            graphics.drawImage(field.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
         }
     }
 }

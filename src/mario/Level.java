@@ -8,8 +8,7 @@ package mario;
  *
  * @author liambrockley
  */
-public enum Scenes {
-    
-    Home, Scene1, Scene2, Scene3, Scene4, Scene5, Scene6,Boss
+public enum Level {
+    TitleScreen,Level1, Level2,Level3,Level4,Level5,Level6,Level7,Boss
     
 }
