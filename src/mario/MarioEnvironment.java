@@ -47,16 +47,30 @@ class MarioEnvironment extends Environment {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
             drawCastle = true;
+             drawField = false;
+            drawHell = false;
             System.out.println("castle");
         }
         if (e.getKeyCode() == KeyEvent.VK_Q) {
             field = ResourceTools.loadImageFromResource("resources/Field.jpg");
              drawField = true;
+             drawCastle = false;
+            drawHell = false;
              System.out.println("field");
         }
         if (e.getKeyCode() == KeyEvent.VK_W) {
             hell = ResourceTools.loadImageFromResource("resources/Hell.jpg"); 
             drawHell = true;
+             drawCastle = false;
+             drawField = false;
+            System.out.println("hell");
+        }
+           if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            hell = ResourceTools.loadImageFromResource("resources/Hell.jpg"); 
+//            drawHell = true;
+            drawHell = false;
+             drawCastle = false;
+             drawField = false;
             System.out.println("hell");
         }
     }
