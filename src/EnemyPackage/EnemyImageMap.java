@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package mario;
+package EnemyPackage;
 
 import image.ResourceTools;
 import java.awt.Image;
@@ -21,7 +21,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author Dr. Stacey McDonald
+ * @author Dr. Liam Brockley Da Warrior Daisy Maestro
  */
 public class EnemyImageMap {
 
@@ -46,7 +46,7 @@ public class EnemyImageMap {
     public static final int IMAGE_WIDTH = 28;
     
     {
-        EnemyImageMap = (BufferedImage) ResourceTools.loadImageFromResource("resources/Enemy.jpeg");
+        EnemyImageMap = (BufferedImage) ResourceTools.loadImageFromResource("resources/Enemy1.jpeg");
     
         subImageMap = new HashMap<String, Point>();
 

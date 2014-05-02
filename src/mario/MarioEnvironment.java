@@ -15,7 +15,7 @@ import java.awt.event.MouseEvent;
 
 /**
  *
- * @author Victor
+ * @author VictorR
  */
 class MarioEnvironment extends Environment {
 
@@ -96,3 +96,4 @@ class MarioEnvironment extends Environment {
         }
     }
 }
+

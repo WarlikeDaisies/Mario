@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 
-package mario;
+package EnemyPackage;
+
+import environment.ApplicationStarter;
 
 /**
  *
  * @author Dr. Stacey McDonald
  */
-public class EnemyAnimationEnvironment {
-    
+public class EnemyAnimationTest {
+     public static void main(String[] args) {
+        ApplicationStarter.run("Animation Test", new EnemyAnimationEnvironment());
+    }
     
 }
