@@ -32,7 +32,12 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     private Image hell;
     private BufferedImage trollSpriteMap;
     private BufferedImage trollSpriteMap2;
+    Troll troll2;
     Troll troll;
+    Troll troll3;
+    Troll troll4;
+    Troll troll5;
+    Troll troll6;
 
     @Override
     public void initializeEnvironment() {
@@ -45,7 +50,17 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         
         addMouseMotionListener(this);
         troll = new Troll(new Point(700, 50), new Velocity(0, 0));
+        troll2 = new Troll(new Point(800, 70), new Velocity(0, 0));
+        troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
+        troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
+        troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
+        troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
         getActors().add(troll);
+        getActors().add(troll2);
+        getActors().add(troll3);
+        getActors().add(troll4);
+        getActors().add(troll5);
+        getActors().add(troll6);
     }
 
     @Override
@@ -66,19 +81,84 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll.stop();
+            troll2.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll2.stop();
+            troll3.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll3.stop();
+            troll4.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll4.stop();
+            troll5.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll5.stop();
+            troll6.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll6.stop();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             troll.setActionState(TrollActionState.WALK_RIGHT);
             troll.getVelocity().x = +2;
+            troll2.setActionState(TrollActionState.WALK_RIGHT);
+            troll2.getVelocity().x = +2;
+            troll3.setActionState(TrollActionState.WALK_RIGHT);
+            troll3.getVelocity().x = +2;
+            troll4.setActionState(TrollActionState.WALK_RIGHT);
+            troll4.getVelocity().x = +2;
+            troll5.setActionState(TrollActionState.WALK_RIGHT);
+            troll5.getVelocity().x = +2;
+            troll6.setActionState(TrollActionState.WALK_RIGHT);
+            troll6.getVelocity().x = +2;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             troll.getVelocity().x = -2;
             troll.setActionState(TrollActionState.WALK_LEFT);
+            troll2.getVelocity().x = -2;
+            troll2.setActionState(TrollActionState.WALK_LEFT);
+            troll3.getVelocity().x = -2;
+            troll3.setActionState(TrollActionState.WALK_LEFT);
+            troll4.getVelocity().x = -2;
+            troll4.setActionState(TrollActionState.WALK_LEFT);
+            troll5.getVelocity().x = -2;
+            troll5.setActionState(TrollActionState.WALK_LEFT);
+            troll6.getVelocity().x = -2;
+            troll6.setActionState(TrollActionState.WALK_LEFT);
+         
             
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             troll.stop();
             troll.setActionState(TrollActionState.STAND_LEFT);
+            troll2.stop();
+            troll2.setActionState(TrollActionState.STAND_LEFT);
+            troll3.stop();
+            troll3.setActionState(TrollActionState.STAND_LEFT);
+            troll4.stop();
+            troll4.setActionState(TrollActionState.STAND_LEFT);
+            troll5.stop();
+            troll5.setActionState(TrollActionState.STAND_LEFT);
+            troll6.stop();
+            troll6.setActionState(TrollActionState.STAND_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_X) {
             troll.stop();
             troll.setActionState(TrollActionState.ROAR_LEFT);
+            troll2.stop();
+            troll2.setActionState(TrollActionState.ROAR_LEFT);
+            troll3.stop();
+            troll3.setActionState(TrollActionState.ROAR_LEFT);
+            troll4.stop();
+            troll4.setActionState(TrollActionState.ROAR_LEFT);
+            troll5.stop();
+            troll5.setActionState(TrollActionState.ROAR_LEFT);
+            troll6.stop();
+            troll6.setActionState(TrollActionState.ROAR_LEFT);
+        }else if (e.getKeyCode() == KeyEvent.VK_V) {
+            troll.stop();
+            troll.setActionState(TrollActionState.STAND_RIGHT);
+            troll2.stop();
+            troll2.setActionState(TrollActionState.STAND_RIGHT);
+            troll3.stop();
+            troll3.setActionState(TrollActionState.STAND_RIGHT);
+            troll4.stop();
+            troll4.setActionState(TrollActionState.STAND_RIGHT);
+            troll5.stop();
+            troll5.setActionState(TrollActionState.STAND_RIGHT);
+            troll6.stop();
+            troll6.setActionState(TrollActionState.STAND_RIGHT);
         }
     }
 
