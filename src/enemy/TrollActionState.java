@@ -11,5 +11,6 @@ package enemy;
  * @author Dr. Stacey McDonald
  */
 public enum TrollActionState {
-        STAND_LEFT, WALK_LEFT, AXE_CHOP_LEFT, ROAR_LEFT
+        STAND_LEFT, WALK_LEFT, AXE_CHOP_LEFT, ROAR_LEFT,
+        STAND_RIGHT,WALK_RIGHT, AXE_CHOP_RIGHT,ROAR_RIGHT 
 }

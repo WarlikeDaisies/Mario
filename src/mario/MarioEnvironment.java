@@ -31,6 +31,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     private Image field;
     private Image hell;
     private BufferedImage trollSpriteMap;
+    private BufferedImage trollSpriteMap2;
     Troll troll;
 
     @Override
@@ -40,6 +41,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         field = ResourceTools.loadImageFromResource("resources/FieldStandardFinal1.jpg");
         hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
         trollSpriteMap = (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprite_map.jpeg");
+        trollSpriteMap2 =  (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprites_right.png");
         
         addMouseMotionListener(this);
         troll = new Troll(new Point(700, 50), new Velocity(0, 0));
@@ -61,13 +63,16 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             this.level = Level.Level3;
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.level = Level.TitleScreen;
+            
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            troll.setActionState(TrollActionState.WALK_RIGHT);
             troll.getVelocity().x = +2;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             troll.getVelocity().x = -2;
             troll.setActionState(TrollActionState.WALK_LEFT);
+            
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             troll.stop();
             troll.setActionState(TrollActionState.STAND_LEFT);
@@ -114,8 +119,8 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             graphics.drawImage(field.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
         }
          
-        if (trollSpriteMap != null) {
-            graphics.drawImage(trollSpriteMap, 0, 0, this);
+        if (trollSpriteMap2 != null) {
+            graphics.drawImage(trollSpriteMap2, 0, 0, this);
         }
     }
 

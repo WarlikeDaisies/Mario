@@ -35,7 +35,7 @@ public class Troll extends Actor {
 //<editor-fold defaultstate="collapsed" desc="Properties">
     private final Animator animator;
     private final ImageManager imageManager;
-    private final ArrayList<String> standLeft, walkLeft, axeChopLeft, roarLeft;
+    private final ArrayList<String> standLeft, walkLeft, axeChopLeft, roarLeft, walkRight;
     
     private TrollActionState actionState = TrollActionState.STAND_LEFT;
     
@@ -59,6 +59,8 @@ public class Troll extends Actor {
             animator.setImageNames(walkLeft);
         } else if (actionState == TrollActionState.ROAR_LEFT) {
             animator.setImageNames(roarLeft);
+         } else if (actionState == TrollActionState.WALK_RIGHT) {
+            animator.setImageNames(walkRight);
         }
     }
 //</editor-fold>
@@ -91,6 +93,23 @@ public class Troll extends Actor {
       imageManager.addImage(walkLeft01, spritemap.getSubimage(0, 286, trollWidth-2, trollHeight));
       
       imageManager.addImage(walkLeft02, spritemap.getSubimage(60,286, trollWidth-1, trollHeight));
+      
+      walkRight = new ArrayList<>();
+        
+        String walkRight01 = "walkRight01";
+        String walkRight02 = "walkRight02";
+        //String walkLeft03 = "walkLeft03";
+        //String walkLeft04 = "walkLeft04";
+        //String walkLeft05 = "walkLeft05";
+        
+        walkRight.add("walkRight01");
+        walkLeft.add("walkRight02");
+
+        
+        
+      imageManager.addImage(walkRight01, spritemap.getSubimage(0, 286, trollWidth-2, trollHeight));
+      
+      imageManager.addImage(walkRight02, spritemap.getSubimage(60,286, trollWidth-1, trollHeight));
 
         
         
