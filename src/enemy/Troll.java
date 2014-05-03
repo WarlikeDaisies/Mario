@@ -57,6 +57,8 @@ public class Troll extends Actor {
             animator.setImageNames(axeChopLeft);
         } else if (actionState == TrollActionState.WALK_LEFT) {
             animator.setImageNames(walkLeft);
+        } else if (actionState == TrollActionState.ROAR_LEFT) {
+            animator.setImageNames(roarLeft);
         }
     }
 //</editor-fold>
@@ -105,12 +107,12 @@ public class Troll extends Actor {
 
         
 
-        axeChopLeft.add(axeChop01);
-        axeChopLeft.add(axeChop02);
-        axeChopLeft.add(axeChop03);
-        axeChopLeft.add(axeChop04);
-        axeChopLeft.add(axeChop05);
-        axeChopLeft.add(axeChop06);
+       axeChopLeft.add(axeChop01);
+       axeChopLeft.add(axeChop02);
+       axeChopLeft.add(axeChop03);
+       axeChopLeft.add(axeChop04);
+       axeChopLeft.add(axeChop05);
+       axeChopLeft.add(axeChop06);
        axeChopLeft.add(axeChop07);
        axeChopLeft.add(axeChop08);
 
@@ -133,8 +135,27 @@ public class Troll extends Actor {
 
 
         roarLeft = new ArrayList<>();
+        
+        String roarLeft01 = "roarLeft01";
+        String roarLeft02 = "roarLeft02";
+        String roarLeft03 = "roarLeft03";
+        String roarLeft04 = "roarLeft04";
+        
 
-        animator = new Animator(imageManager, axeChopLeft, 75);
+       roarLeft.add(roarLeft01);
+       roarLeft.add(roarLeft02);
+       roarLeft.add(roarLeft03);
+       roarLeft.add(roarLeft04);
+       
+      imageManager.addImage(roarLeft01, spritemap.getSubimage(362, 282, trollWidth+2, trollHeight+10));
+      
+      imageManager.addImage(roarLeft02, spritemap.getSubimage(432,282, trollWidth+2, trollHeight+10));
+      
+      imageManager.addImage(roarLeft03, spritemap.getSubimage(362, 282, trollWidth+2, trollHeight+10));
+      
+      imageManager.addImage(roarLeft04, spritemap.getSubimage(432,282, trollWidth+2, trollHeight+10));
+
+        animator = new Animator(imageManager, axeChopLeft, 85);
        
         
     }

@@ -61,18 +61,19 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             this.level = Level.Level3;
         } else if (e.getKeyCode() == KeyEvent.VK_R) {
             this.level = Level.TitleScreen;
-        } else if (e.getKeyCode() == KeyEvent.VK_S) {
-            troll.setActionState(TrollActionState.STAND_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
-        } else if (e.getKeyCode() == KeyEvent.VK_P) {
-            troll.setActionState(TrollActionState.WALK_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             troll.getVelocity().x = +2;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             troll.getVelocity().x = -2;
+            troll.setActionState(TrollActionState.WALK_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             troll.stop();
+            troll.setActionState(TrollActionState.STAND_LEFT);
+        } else if (e.getKeyCode() == KeyEvent.VK_X) {
+            troll.stop();
+            troll.setActionState(TrollActionState.ROAR_LEFT);
         }
     }
 
