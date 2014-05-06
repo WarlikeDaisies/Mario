@@ -166,6 +166,42 @@ public class Troll extends Actor {
       
       axeChopRight = new ArrayList<>();
 
+        String axeChopRight01 = "axeChopRight01";
+        String axeChopRight02 = "axeChopRight02";
+        String axeChopRight03 = "axeChopRight03";
+        String axeChopRight04 = "axeChopRight04";
+        String axeChopRight05 = "axeChopRight05";
+        String axeChopRight06 = "axeChopRight06";
+        String axeChopRight07 = "axeChopRight07";
+        String axeChopRight08 = "axeChopRight08";
+
+        
+
+       axeChopRight.add(axeChopRight01);
+       axeChopRight.add(axeChopRight02);
+       axeChopRight.add(axeChopRight03);
+       axeChopRight.add(axeChopRight04);
+       axeChopRight.add(axeChopRight05);
+       axeChopRight.add(axeChopRight06);
+       axeChopRight.add(axeChopRight07);
+       axeChopRight.add(axeChopRight08);
+
+      
+      imageManager.addImage(axeChopRight01, spritemap2.getSubimage(184,5, trollWidth-15, trollHeight));
+      
+      imageManager.addImage(axeChopRight02, spritemap2.getSubimage(118,5, trollWidth, trollHeight));
+      
+      imageManager.addImage(axeChopRight03, spritemap2.getSubimage(39, 5, trollWidth, trollHeight));
+      
+      imageManager.addImage(axeChopRight04, spritemap2.getSubimage(445,100, trollWidth-15, trollHeight));
+      
+      imageManager.addImage(axeChopRight05, spritemap2.getSubimage(445,100, trollWidth-15, trollHeight));
+      
+      imageManager.addImage(axeChopRight06, spritemap2.getSubimage(228, 95, trollWidth+35, trollHeight+10));
+      
+      imageManager.addImage(axeChopRight07, spritemap2.getSubimage(126, 100, trollWidth+35, trollHeight));
+      
+      imageManager.addImage(axeChopRight08, spritemap2.getSubimage(126, 100, trollWidth+35, trollHeight));
 
         roarLeft = new ArrayList<>();
         
@@ -189,6 +225,26 @@ public class Troll extends Actor {
       imageManager.addImage(roarLeft04, spritemap.getSubimage(432,282, trollWidth+2, trollHeight+10));
       
       roarRight = new ArrayList<>();
+      
+        String roarRight01 = "roarRight01";
+        String roarRight02 = "roarRight02";
+        String roarRight03 = "roarRight03";
+        String roarRight04 = "roarRight04";
+        
+
+       roarRight.add(roarRight01);
+       roarRight.add(roarRight02);
+       roarRight.add(roarRight03);
+       roarRight.add(roarRight04);
+       
+      imageManager.addImage(roarRight01, spritemap2.getSubimage(65, 282, trollWidth-1, trollHeight+10));
+      
+      imageManager.addImage(roarRight02, spritemap2.getSubimage(3,282, trollWidth-1, trollHeight+10));
+      
+      imageManager.addImage(roarRight03, spritemap2.getSubimage(65, 282, trollWidth-1, trollHeight+10));
+      
+      imageManager.addImage(roarRight04, spritemap2.getSubimage(3,282, trollWidth-1, trollHeight+10));
+      
 
         animator = new Animator(imageManager, axeChopLeft, 85);
         

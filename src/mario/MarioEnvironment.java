@@ -51,16 +51,16 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         addMouseMotionListener(this);
         troll = new Troll(new Point(700, 50), new Velocity(0, 0));
         troll2 = new Troll(new Point(800, 70), new Velocity(0, 0));
-        troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
-        troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
-        troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
-        troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
+       // troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
+       // troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
+       // troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
+      //  troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
         getActors().add(troll);
         getActors().add(troll2);
-        getActors().add(troll3);
-        getActors().add(troll4);
-        getActors().add(troll5);
-        getActors().add(troll6);
+        //getActors().add(troll3);
+        //getActors().add(troll4);
+        //getActors().add(troll5);
+        //getActors().add(troll6);
     }
 
     @Override
@@ -91,6 +91,19 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll5.setActionState(TrollActionState.AXE_CHOP_LEFT);
             troll5.stop();
             troll6.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            troll6.stop();
+            } else if (e.getKeyCode() == KeyEvent.VK_Z) {
+            troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            troll.stop();
+            troll2.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            troll2.stop();
+            troll3.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            troll3.stop();
+            troll4.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            troll4.stop();
+            troll5.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            troll5.stop();
+            troll6.setActionState(TrollActionState.AXE_CHOP_RIGHT);
             troll6.stop();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             troll.setActionState(TrollActionState.WALK_RIGHT);
@@ -146,6 +159,20 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll5.setActionState(TrollActionState.ROAR_LEFT);
             troll6.stop();
             troll6.setActionState(TrollActionState.ROAR_LEFT);
+         } else if (e.getKeyCode() == KeyEvent.VK_B) {
+            troll.stop();
+            troll.setActionState(TrollActionState.ROAR_RIGHT);
+            troll2.stop();
+            troll2.setActionState(TrollActionState.ROAR_RIGHT);
+            troll3.stop();
+            troll3.setActionState(TrollActionState.ROAR_RIGHT);
+            troll4.stop();
+            troll4.setActionState(TrollActionState.ROAR_RIGHT);
+            troll5.stop();
+            troll5.setActionState(TrollActionState.ROAR_RIGHT);
+            troll6.stop();
+            troll6.setActionState(TrollActionState.ROAR_RIGHT);
+            
         }else if (e.getKeyCode() == KeyEvent.VK_V) {
             troll.stop();
             troll.setActionState(TrollActionState.STAND_RIGHT);
@@ -199,9 +226,9 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             graphics.drawImage(field.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
         }
          
-        if (trollSpriteMap2 != null) {
-            graphics.drawImage(trollSpriteMap2, 0, 0, this);
-        }
+       // if (trollSpriteMap2 != null) {
+         //  graphics.drawImage(trollSpriteMap2, 0, 0, this);
+       // }
     }
 
 //<editor-fold defaultstate="collapsed" desc="MouseMotionListener">
