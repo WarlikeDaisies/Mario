@@ -51,7 +51,11 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         addMouseMotionListener(this);
         troll = new Troll(new Point(700, 50), new Velocity(0, 0));
         troll2 = new Troll(new Point(800, 70), new Velocity(0, 0));
+<<<<<<< HEAD
        troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
+=======
+        troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
+>>>>>>> FETCH_HEAD
         troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
         troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
         troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
@@ -178,7 +182,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll.setActionState(TrollActionState.STAND_RIGHT);
             troll2.stop();
             troll2.setActionState(TrollActionState.STAND_RIGHT);
-            troll3.stop();
+         troll3.stop();
             troll3.setActionState(TrollActionState.STAND_RIGHT);
             troll4.stop();
             troll4.setActionState(TrollActionState.STAND_RIGHT);
@@ -186,7 +190,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll5.setActionState(TrollActionState.STAND_RIGHT);
             troll6.stop();
             troll6.setActionState(TrollActionState.STAND_RIGHT);
-        }
+      }
     }
 
     @Override
