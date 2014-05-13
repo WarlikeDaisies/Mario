@@ -51,16 +51,16 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         addMouseMotionListener(this);
         troll = new Troll(new Point(700, 50), new Velocity(0, 0));
         troll2 = new Troll(new Point(800, 70), new Velocity(0, 0));
-       // troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
-       // troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
-       // troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
-      //  troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
+       troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
+        troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
+        troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
+        troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
         getActors().add(troll);
         getActors().add(troll2);
-        //getActors().add(troll3);
-        //getActors().add(troll4);
-        //getActors().add(troll5);
-        //getActors().add(troll6);
+        getActors().add(troll3);
+        getActors().add(troll4);
+        getActors().add(troll5);
+        getActors().add(troll6);
     }
 
     @Override
@@ -226,9 +226,9 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             graphics.drawImage(field.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
         }
          
-       // if (trollSpriteMap2 != null) {
-         //  graphics.drawImage(trollSpriteMap2, 0, 0, this);
-       // }
+        if (trollSpriteMap2 != null) {
+           graphics.drawImage(trollSpriteMap2, 0, 0, this);
+        }
     }
 
 //<editor-fold defaultstate="collapsed" desc="MouseMotionListener">
