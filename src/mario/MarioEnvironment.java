@@ -4,6 +4,7 @@
  */
 package mario;
 
+import audio.AudioPlayer;
 import enemy.Troll;
 import enemy.TrollActionState;
 import environment.Environment;
@@ -51,11 +52,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         addMouseMotionListener(this);
         troll = new Troll(new Point(700, 50), new Velocity(0, 0));
         troll2 = new Troll(new Point(800, 70), new Velocity(0, 0));
-<<<<<<< HEAD
-       troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
-=======
         troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
->>>>>>> FETCH_HEAD
         troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
         troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
         troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
@@ -84,6 +81,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             this.level = Level.TitleScreen;
             
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
+            AudioPlayer.play("/resources/AxeChop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
             troll.stop();
             troll2.setActionState(TrollActionState.AXE_CHOP_LEFT);
@@ -97,6 +95,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.setActionState(TrollActionState.AXE_CHOP_LEFT);
             troll6.stop();
             } else if (e.getKeyCode() == KeyEvent.VK_Z) {
+            AudioPlayer.play("/resources/AxeChop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
             troll.stop();
             troll2.setActionState(TrollActionState.AXE_CHOP_RIGHT);
@@ -110,6 +109,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.setActionState(TrollActionState.AXE_CHOP_RIGHT);
             troll6.stop();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            AudioPlayer.play("/resources/Walk.wav");
             troll.setActionState(TrollActionState.WALK_RIGHT);
             troll.getVelocity().x = +2;
             troll2.setActionState(TrollActionState.WALK_RIGHT);
@@ -123,6 +123,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.setActionState(TrollActionState.WALK_RIGHT);
             troll6.getVelocity().x = +2;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            AudioPlayer.play("/resources/Walk.wav");
             troll.getVelocity().x = -2;
             troll.setActionState(TrollActionState.WALK_LEFT);
             troll2.getVelocity().x = -2;
@@ -151,6 +152,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.stop();
             troll6.setActionState(TrollActionState.STAND_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_X) {
+            AudioPlayer.play("/resources/Roar.wav");
             troll.stop();
             troll.setActionState(TrollActionState.ROAR_LEFT);
             troll2.stop();
@@ -164,6 +166,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.stop();
             troll6.setActionState(TrollActionState.ROAR_LEFT);
          } else if (e.getKeyCode() == KeyEvent.VK_B) {
+            AudioPlayer.play("/resources/Roar.wav");
             troll.stop();
             troll.setActionState(TrollActionState.ROAR_RIGHT);
             troll2.stop();
