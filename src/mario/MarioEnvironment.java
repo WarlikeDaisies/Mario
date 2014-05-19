@@ -48,9 +48,9 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     public void initializeEnvironment() {
       // Loading images in initialization increases efficiency and prevents image from loading 100,000 times a second
         horde = ResourceTools.loadImageFromResource("resources/horde.jpg");
-        castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
-        field = ResourceTools.loadImageFromResource("resources/Field.jpg");
-        hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
+        castle = ResourceTools.loadImageFromResource("resources/castle.jpg");
+        field = ResourceTools.loadImageFromResource("resources/field_standard.jpg");
+        hell = ResourceTools.loadImageFromResource("resources/hell.jpg");
 
         trollSpriteMap = (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprite_map.jpeg");
         trollSpriteMap2 = (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprites_right.png");
