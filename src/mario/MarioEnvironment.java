@@ -26,7 +26,7 @@ import java.awt.image.BufferedImage;
  */
 class MarioEnvironment extends Environment implements MouseMotionListener {
 
-    private Level level = Level.TitleScreen;
+    private Level level;
     private Image horde;
     private Image castle;
     private Image field;
@@ -56,12 +56,12 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         trollSpriteMap2 = (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprites_right.png");
 
         addMouseMotionListener(this);
-        troll = new Troll(new Point(700, 50), new Velocity(0, 0));
-        troll2 = new Troll(new Point(800, 70), new Velocity(0, 0));
-        troll3 = new Troll(new Point(600, 90), new Velocity(0, 0));
-        troll4 = new Troll(new Point(500, 50), new Velocity(0, 0));
-        troll5 = new Troll(new Point(400, 70), new Velocity(0, 0));
-        troll6 = new Troll(new Point(300, 90), new Velocity(0, 0));
+        troll = new Troll(new Point(700, 400), new Velocity(0, 0));
+        troll2 = new Troll(new Point(800, 400), new Velocity(0, 0));
+        troll3 = new Troll(new Point(600, 400), new Velocity(0, 0));
+        troll4 = new Troll(new Point(500, 400), new Velocity(0, 0));
+        troll5 = new Troll(new Point(400, 400), new Velocity(0, 0));
+        troll6 = new Troll(new Point(300, 400), new Velocity(0, 0));
         
         getActors().add(troll);
         getActors().add(troll2);
@@ -242,7 +242,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     @Override
     public void paintEnvironment(Graphics graphics) {
 // implement animations including character and map and shop, after break here
-        if (horde != null) {
+        if (this.level == Level.TitleScreen) {
             graphics.drawImage(horde.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
 
 
@@ -285,9 +285,9 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             graphics.drawImage(field.getScaledInstance(885, 500, Image.SCALE_FAST), 0, 0, null);
         }
 
-        if (trollSpriteMap2 != null) {
-            graphics.drawImage(trollSpriteMap2, 0, 0, this);
-        }
+       // if (trollSpriteMap2 != null) {
+         //   graphics.drawImage(trollSpriteMap2, 0, 0, this);
+        //}
     }
 
 //<editor-fold defaultstate="collapsed" desc="MouseMotionListener">
