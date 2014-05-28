@@ -39,7 +39,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     Troll troll4;
     Troll troll5;
     Troll troll6;
-    
+
     Hero hero;
 
     boolean drawCastle;
@@ -48,7 +48,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
 
     @Override
     public void initializeEnvironment() {
-      // Loading images in initialization increases efficiency and prevents image from loading 100,000 times a second
+        // Loading images in initialization increases efficiency and prevents image from loading 100,000 times a second
         horde = ResourceTools.loadImageFromResource("resources/horde.jpg");
         castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
         field = ResourceTools.loadImageFromResource("resources/field_standard.jpg");
@@ -64,14 +64,14 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         troll4 = new Troll(new Point(500, 400), new Velocity(0, 0));
         troll5 = new Troll(new Point(400, 400), new Velocity(0, 0));
         troll6 = new Troll(new Point(300, 400), new Velocity(0, 0));
-        
+
         getActors().add(troll);
         getActors().add(troll2);
         getActors().add(troll3);
         getActors().add(troll4);
         getActors().add(troll5);
         getActors().add(troll6);
-        
+
         hero = new Hero(new Point(100, 400), new Velocity(0, 0));
         this.getActors().add(hero);
 
@@ -84,7 +84,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
 
     @Override
     public void keyPressedHandler(KeyEvent e) {
-       //create a way to switch back to previous images and create a method to allow title screen to be returned to using the escape key
+        //create a way to switch back to previous images and create a method to allow title screen to be returned to using the escape key
 //        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 //            castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
 //            drawCastle = true;
@@ -122,21 +122,17 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             this.level = Level.Level3;
         } else if (e.getKeyCode() == KeyEvent.VK_4) {
             this.level = Level.TitleScreen;
-           // this.troll=null;
-
-            if (e.getKeyCode() == KeyEvent.VK_W) {
-                hero.setActionState(AnimatedActor.ACTION_STATE_BACK_WALK);
-            } else if (e.getKeyCode() == KeyEvent.VK_A) {
-                hero.setActionState(AnimatedActor.ACTION_STATE_LEFT_WALK);
-            } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                hero.setActionState(AnimatedActor.ACTION_STATE_FRONT_WALK);
-            } else if (e.getKeyCode() == KeyEvent.VK_D) {
-                hero.setActionState(AnimatedActor.ACTION_STATE_RIGHT_WALK);
-            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                hero.setActionState(AnimatedActor.ACTION_STATE_STOP);
-            }
-   
-            
+            // this.troll=null;
+//        } else if (e.getKeyCode() == KeyEvent.VK_W) {
+//            hero.setActionState(AnimatedActor.ACTION_STATE_BACK_WALK);
+        } else if (e.getKeyCode() == KeyEvent.VK_A) {
+            hero.setActionState(AnimatedActor.ACTION_STATE_LEFT_WALK);
+//        } else if (e.getKeyCode() == KeyEvent.VK_S) {
+//            hero.setActionState(AnimatedActor.ACTION_STATE_FRONT_WALK);
+        } else if (e.getKeyCode() == KeyEvent.VK_D) {
+            hero.setActionState(AnimatedActor.ACTION_STATE_RIGHT_WALK);
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            hero.setActionState(AnimatedActor.ACTION_STATE_STOP);
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
             AudioPlayer.play("/resources/axe_chop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
@@ -264,8 +260,6 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
 // implement animations including character and map and shop, after break here
         if (this.level == Level.TitleScreen) {
             graphics.drawImage(horde.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-            
-
 
             graphics.setColor(Color.YELLOW);
             graphics.drawRect(800, 700, 350, 65);
@@ -279,7 +273,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             graphics.setFont(new Font("Comic Sans", Font.ITALIC, 65));
             graphics.drawString("Mapleland", 818, 200);
         }
-       
+
 //        if (this.level == Level.TitleScreen) {
 //            graphics.drawImage(horde.getScaledInstance(885,500, Image.SCALE_FAST), 0, 0, null);
 //
@@ -295,7 +289,6 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
 //            graphics.setFont(new Font("Comic Sans", Font.ITALIC, 65));
 //            graphics.drawString("Mapleland", 818, 200);
 //        }
-
         if (this.level == Level.Level1) {
             graphics.drawImage(castle.getScaledInstance(885, 500, Image.SCALE_FAST), 0, 0, null);
         }
@@ -306,7 +299,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             graphics.drawImage(field.getScaledInstance(885, 500, Image.SCALE_FAST), 0, 0, null);
         }
 
-      //  if (trollSpriteMap2 != null) {
+        //  if (trollSpriteMap2 != null) {
         //    graphics.drawImage(trollSpriteMap2, 0, 0, this);
         //}
     }

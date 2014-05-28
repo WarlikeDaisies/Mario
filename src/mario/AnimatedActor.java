@@ -31,7 +31,7 @@ public abstract class AnimatedActor extends Actor {
         setImageManager(new ImageManager());
         ArrayList<String> imageNames = new ArrayList<>();
 
-        setAnimator(new Animator(getImageManager(), imageNames, 250));
+        setAnimator(new Animator(getImageManager(), imageNames, 100));
     }
 
 
@@ -47,7 +47,7 @@ public abstract class AnimatedActor extends Actor {
 //<editor-fold defaultstate="collapsed" desc="Properties">
     private ImageManager imageManager;
     private Animator animator;
-    private int speed = 2;
+    private int speed = 4;
 
     private ArrayList<String> frontWalkImages, backWalkImages, leftWalkImages, rightWalkImages, standImage;
     private String actionState;
