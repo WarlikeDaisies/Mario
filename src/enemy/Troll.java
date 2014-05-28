@@ -7,9 +7,9 @@ package enemy;
 
 import environment.Actor;
 import environment.Velocity;
-import image.Animator;
-import image.ImageManager;
-import image.ResourceTools;
+import images.Animator;
+import images.ImageManager;
+import images.ResourceTools;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -22,14 +22,14 @@ import java.util.ArrayList;
 public class Troll extends Actor {
 
 //<editor-fold defaultstate="collapsed" desc="Methods">
-    @Override
-    public Image getImage() {
-        if (animator != null) {
-            return animator.getCurrentImage();
-        } else {
-            return super.getImage();
-        }
-    }
+//    @Override
+//    public Image getImage() {
+//        if (animator != null) {
+//            return animator.getCurrentImage();
+//        } else {
+//            return super.getImage();
+//        }
+//    }
 //</editor-fold>
     
 //<editor-fold defaultstate="collapsed" desc="Properties">

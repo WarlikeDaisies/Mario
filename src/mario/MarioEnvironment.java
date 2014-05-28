@@ -39,6 +39,8 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     Troll troll4;
     Troll troll5;
     Troll troll6;
+    
+    Hero hero;
 
     boolean drawCastle;
     boolean drawField;
@@ -69,6 +71,10 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         getActors().add(troll4);
         getActors().add(troll5);
         getActors().add(troll6);
+        
+        hero = new Hero(new Point(100, 400), new Velocity(0, 0));
+        this.getActors().add(hero);
+
     }
 
     @Override
@@ -108,16 +114,29 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
 //             drawField = false;
 //            System.out.println("hell");=======
 
-        if (e.getKeyCode() == KeyEvent.VK_Q) {
+        if (e.getKeyCode() == KeyEvent.VK_1) {
             this.level = Level.Level1;
-        } else if (e.getKeyCode() == KeyEvent.VK_W) {
+        } else if (e.getKeyCode() == KeyEvent.VK_2) {
             this.level = Level.Level2;
-        } else if (e.getKeyCode() == KeyEvent.VK_E) {
+        } else if (e.getKeyCode() == KeyEvent.VK_3) {
             this.level = Level.Level3;
-        } else if (e.getKeyCode() == KeyEvent.VK_R) {
+        } else if (e.getKeyCode() == KeyEvent.VK_4) {
             this.level = Level.TitleScreen;
            // this.troll=null;
 
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                hero.setActionState(AnimatedActor.ACTION_STATE_BACK_WALK);
+            } else if (e.getKeyCode() == KeyEvent.VK_A) {
+                hero.setActionState(AnimatedActor.ACTION_STATE_LEFT_WALK);
+            } else if (e.getKeyCode() == KeyEvent.VK_S) {
+                hero.setActionState(AnimatedActor.ACTION_STATE_FRONT_WALK);
+            } else if (e.getKeyCode() == KeyEvent.VK_D) {
+                hero.setActionState(AnimatedActor.ACTION_STATE_RIGHT_WALK);
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                hero.setActionState(AnimatedActor.ACTION_STATE_STOP);
+            }
+   
+            
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
             AudioPlayer.play("/resources/axe_chop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
