@@ -5,12 +5,14 @@
 package mario;
 
 import environment.Environment;
+import environment.Velocity;
 import image.Animator;
 import image.AnimatorEventListenerIntf;
 import image.ImageManager;
 import image.ResourceTools;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -34,6 +36,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
     private ArrayList<String> rightRunImages;
     private ImageManager imageManager2;
     private Animator animator2;
+    Hero hero;
         
     @Override
     public void initializeEnvironment() {
@@ -124,6 +127,9 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
        heroSheet2 = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_right_alpha.jpg");
 
         this.addMouseMotionListener(this);
+        hero = new Hero(new Point(620, 220), new Velocity(0, 0));
+        this.getActors().add(hero);
+        
     }
 
     @Override
@@ -134,8 +140,17 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
     public void keyPressedHandler(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             animator.setImageNames(rightRunImages);
+            
+            hero.getVelocity().x = 4;
+            hero.getAnimator().setImageNames(hero.getRightWalkImages());
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             animator.setImageNames(leftRunImages);
+            
+            hero.getVelocity().x = -4;
+            hero.getAnimator().setImageNames(hero.getLeftWalkImages());
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+//            animator.setImageNames(leftRunImages);
+            hero.stop();
         }
     }
 
@@ -186,7 +201,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
     }
 //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="AnimatorEventListenerIntf">
+//<editor-fold defaultstate="collapsed" desc="AnimatorEventListenerIntf">
     @Override
     public void imageChange(Animator animator) {
         
