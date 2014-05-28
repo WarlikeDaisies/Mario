@@ -38,7 +38,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
     @Override
     public void initializeEnvironment() {
 
-        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_left_alpha.jpg");
+        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_left_alpha.png");
         heroRun01 = heroSheet.getSubimage(10, 118, HERO_WIDTH, HERO_HEIGHT);
         heroRun02 = heroSheet.getSubimage(110, 118, HERO_WIDTH, HERO_HEIGHT);
         heroRun03 = heroSheet.getSubimage(210, 118, HERO_WIDTH, HERO_HEIGHT);
@@ -46,7 +46,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
         heroRun05 = heroSheet.getSubimage(410, 118, HERO_WIDTH, HERO_HEIGHT);
         heroRun06 = heroSheet.getSubimage(510, 118, HERO_WIDTH, HERO_HEIGHT);  
         
-        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_left_alpha.jpg");
+        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_left_alpha.png");
         heroRun01 = heroSheet.getSubimage(10, 118, HERO_WIDTH, HERO_HEIGHT);
         heroRun02 = heroSheet.getSubimage(110, 118, HERO_WIDTH, HERO_HEIGHT);
         heroRun03 = heroSheet.getSubimage(210, 118, HERO_WIDTH, HERO_HEIGHT);
@@ -54,7 +54,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
         heroRun05 = heroSheet.getSubimage(410, 118, HERO_WIDTH, HERO_HEIGHT);
         heroRun06 = heroSheet.getSubimage(510, 118, HERO_WIDTH, HERO_HEIGHT); 
         
-        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_right_alpha.jpg");
+        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_right_alpha.png");
         heroRun11 = heroSheet.getSubimage(34, 119, HERO_WIDTH2, HERO_HEIGHT);
         heroRun12 = heroSheet.getSubimage(136, 119, HERO_WIDTH2, HERO_HEIGHT);
         heroRun13 = heroSheet.getSubimage(236, 119, HERO_WIDTH2, HERO_HEIGHT);
@@ -62,7 +62,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
         heroRun15 = heroSheet.getSubimage(430, 119, HERO_WIDTH2, HERO_HEIGHT);
         heroRun16 = heroSheet.getSubimage(525, 119, HERO_WIDTH2, HERO_HEIGHT); 
         
-        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_right_alpha.jpg");
+        heroSheet = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_right_alpha.png");
         heroRun11 = heroSheet.getSubimage(34, 119, HERO_WIDTH2, HERO_HEIGHT);
         heroRun12 = heroSheet.getSubimage(136, 119, HERO_WIDTH2, HERO_HEIGHT);
         heroRun13 = heroSheet.getSubimage(236, 119, HERO_WIDTH2, HERO_HEIGHT);
@@ -110,18 +110,17 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
         imageManager.addImage(leftRun05, heroRun05);
         imageManager.addImage(leftRun06, heroRun06);
         
-        imageManager2 = new ImageManager();
-        imageManager2.addImage(rightRun11, heroRun11);
-        imageManager2.addImage(rightRun12, heroRun12);
-        imageManager2.addImage(rightRun13, heroRun13);
-        imageManager2.addImage(rightRun14, heroRun14);
-        imageManager2.addImage(rightRun15, heroRun15);
-        imageManager2.addImage(rightRun16, heroRun16);
-        
-        
+//        imageManager2 = new ImageManager();
+        imageManager.addImage(rightRun11, heroRun11);
+        imageManager.addImage(rightRun12, heroRun12);
+        imageManager.addImage(rightRun13, heroRun13);
+        imageManager.addImage(rightRun14, heroRun14);
+        imageManager.addImage(rightRun15, heroRun15);
+        imageManager.addImage(rightRun16, heroRun16);
+                
         animator = new Animator(imageManager, leftRunImages, 125, this);
 
-        animator2 = new Animator(imageManager2, rightRunImages, 125, this);
+//        animator2 = new Animator(imageManager2, rightRunImages, 125, this);
        heroSheet2 = (BufferedImage) ResourceTools.loadImageFromResource("resources/hero_sprite_sheet_right_alpha.jpg");
 
         this.addMouseMotionListener(this);
@@ -133,10 +132,14 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
 
     @Override
     public void keyPressedHandler(KeyEvent e) {
-
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            animator.setImageNames(rightRunImages);
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            animator.setImageNames(leftRunImages);
+        }
     }
 
-        public void keyReleasedHmoyammmmandler(KeyEvent e) {
+    public void keyReleasedHmoyammmmandler(KeyEvent e) {
 
     }
 
@@ -165,9 +168,9 @@ class MarioEnvironment extends Environment implements MouseMotionListener, Anima
         
         if (animator != null) {
             graphics.drawImage(animator.getCurrentImage(), 620, 420, this);
-        if (animator2 != null) {
-            graphics.drawImage(animator2.getCurrentImage(), 620, 500, this);
-        }    
+//        if (animator2 != null) {
+//            graphics.drawImage(animator2.getCurrentImage(), 620, 500, this);
+//        }    
         }
     }
 
