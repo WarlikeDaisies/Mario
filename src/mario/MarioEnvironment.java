@@ -25,7 +25,8 @@ import java.awt.image.BufferedImage;
  * @author VictorR
  */
 class MarioEnvironment extends Environment implements MouseMotionListener {
-
+    
+    private int characterHealth = 10;
     private Level level = Level.TitleScreen;
     private Image horde;
     private Image castle;
@@ -39,13 +40,11 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     Troll troll4;
     Troll troll5;
     Troll troll6;
-
     Hero hero;
-
     boolean drawCastle;
     boolean drawField;
     boolean drawHell;
-
+    
     @Override
     public void initializeEnvironment() {
         // Loading images in initialization increases efficiency and prevents image from loading 100,000 times a second
@@ -53,34 +52,58 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         castle = ResourceTools.loadImageFromResource("resources/Castle.jpg");
         field = ResourceTools.loadImageFromResource("resources/field_standard.jpg");
         hell = ResourceTools.loadImageFromResource("resources/Hell.jpg");
-
+        
         trollSpriteMap = (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprite_map.jpeg");
         trollSpriteMap2 = (BufferedImage) ResourceTools.loadImageFromResource("resources/troll_sprites_right.png");
-
+        
         addMouseMotionListener(this);
+        
+        
         troll = new Troll(new Point(700, 400), new Velocity(0, 0));
         troll2 = new Troll(new Point(800, 400), new Velocity(0, 0));
         troll3 = new Troll(new Point(600, 400), new Velocity(0, 0));
         troll4 = new Troll(new Point(500, 400), new Velocity(0, 0));
         troll5 = new Troll(new Point(400, 400), new Velocity(0, 0));
         troll6 = new Troll(new Point(300, 400), new Velocity(0, 0));
-
+        
         getActors().add(troll);
         getActors().add(troll2);
         getActors().add(troll3);
         getActors().add(troll4);
         getActors().add(troll5);
         getActors().add(troll6);
-
+        
         hero = new Hero(new Point(100, 400), new Velocity(0, 0));
         this.getActors().add(hero);
-
+        
+        if (this.hero.isDead()) {
+            this.level = Level.TitleScreen;
+        }
+        
+        
+        
     }
-
+    
     @Override
     public void timerTaskHandler() {
-        //create the length of a level
-    }
+        if ((troll.intersects(hero)) && 
+                !(troll.isChopping())) {
+            if (hero.getCenterOfMass().x <= troll.getCenterOfMass().x) {
+                this.troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
+            }else{
+                this.troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+                
+            } 
+        
+                
+            }
+            troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
+            System.out.println("health is" + Hero.MAX_HEALTH);
+        }
+    
+
+
 
     @Override
     public void keyPressedHandler(KeyEvent e) {
@@ -131,8 +154,8 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
 //            hero.setActionState(AnimatedActor.ACTION_STATE_FRONT_WALK);
         } else if (e.getKeyCode() == KeyEvent.VK_D) {
             hero.setActionState(AnimatedActor.ACTION_STATE_RIGHT_WALK);
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            hero.setActionState(AnimatedActor.ACTION_STATE_STOP);
+            // } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            //   hero.setActionState(AnimatedActor.ACTION_STATE_STOP);
         } else if (e.getKeyCode() == KeyEvent.VK_C) {
             AudioPlayer.play("/resources/axe_chop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
@@ -202,6 +225,8 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll5.setActionState(TrollActionState.STAND_LEFT);
             troll6.stop();
             troll6.setActionState(TrollActionState.STAND_LEFT);
+            
+            
         } else if (e.getKeyCode() == KeyEvent.VK_X) {
             AudioPlayer.play("/resources/roar.wav");
             troll.stop();
@@ -231,6 +256,11 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.stop();
             troll6.setActionState(TrollActionState.ROAR_RIGHT);
 
+//        } else if (e.getKeyCode() == KeyEvent.VK_P) {
+//            
+//            this.hero.HERO_HEALTH=this.hero.HERO_HEALTH-1;
+//            System.out.println("Hero health ="+ this.hero.HERO_HEALTH);
+
         } else if (e.getKeyCode() == KeyEvent.VK_V) {
             troll.stop();
             troll.setActionState(TrollActionState.STAND_RIGHT);
@@ -246,32 +276,35 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             troll6.setActionState(TrollActionState.STAND_RIGHT);
         }
     }
-
+    
     @Override
     public void keyReleasedHandler(KeyEvent e) {
     }
-
+    
     @Override
     public void environmentMouseClicked(MouseEvent e) {
     }
-
+    
     @Override
     public void paintEnvironment(Graphics graphics) {
 // implement animations including character and map and shop, after break here
         if (this.level == Level.TitleScreen) {
+            
             graphics.drawImage(horde.getScaledInstance(1950, 1100, Image.SCALE_FAST), 0, 0, null);
-
+            
             graphics.setColor(Color.YELLOW);
             graphics.drawRect(800, 700, 350, 65);
             graphics.drawRect(800, 400, 350, 65);
-
+            
             graphics.setFont(new Font("Calabri", Font.BOLD, 45));
             graphics.drawString("New Game", 860, 450);
             graphics.drawString("Instructions", 850, 750);
-
+            
             graphics.setColor(Color.YELLOW);
             graphics.setFont(new Font("Comic Sans", Font.ITALIC, 65));
             graphics.drawString("Mapleland", 818, 200);
+
+            //       this.troll=null;
         }
 
 //        if (this.level == Level.TitleScreen) {
@@ -308,7 +341,7 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     @Override
     public void mouseDragged(MouseEvent e) {
     }
-
+    
     @Override
     public void mouseMoved(MouseEvent e) {
         System.out.printf(" [%d, %d]\n", e.getPoint().x, e.getPoint().y);

@@ -29,6 +29,12 @@ public class Troll extends Actor {
             return super.getImage();
         }
     }
+    
+    
+    public boolean isChopping(){
+        return ((this.actionState == TrollActionState.AXE_CHOP_LEFT) || 
+                (this.actionState == TrollActionState.AXE_CHOP_RIGHT));
+    }
 //</editor-fold>
     
 //<editor-fold defaultstate="collapsed" desc="Properties">
@@ -37,6 +43,66 @@ public class Troll extends Actor {
     private final ArrayList<String> standLeft, walkLeft, axeChopLeft, roarLeft, walkRight, standRight,axeChopRight, roarRight;
     
     private TrollActionState actionState = TrollActionState.STAND_LEFT;
+    
+    public static int MIN_HEALTH = 0;
+    public static int MAX_HEALTH = 100;
+    private int health;
+    
+    private boolean alive = true;
+
+    /**
+     * @return the health
+     */
+    public int getHealth() {
+        return health;
+    }
+
+    /**
+     * @param health the health to set
+     */
+    public void setHealth(int health) {
+        if (health < MIN_HEALTH) {
+            this.health = MIN_HEALTH;
+        } else if (health < MAX_HEALTH) {
+            this.health = MAX_HEALTH;
+        } else {
+            this.health = health;           
+        }
+        
+        setAlive(!(health == MIN_HEALTH));
+    }
+
+    /**
+     * @param health the health to set
+     */
+    public void addToHealth(int health) {
+        setHealth(this.health + health);
+    }
+
+    /**
+     * @return the alive
+     */
+    public boolean isDead() {
+        return !alive;
+    }
+
+    /**
+     * @return the alive
+     */
+    public boolean isAlive() {
+        return alive;
+    }
+
+    /**
+     * @param alive the alive to set
+     */
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+    
+
+    
+    
     
     /**
      * @return the actionState
@@ -254,6 +320,7 @@ public class Troll extends Actor {
 
     public Troll(Point position, Velocity velocity) {
         super(position, velocity);
+       
     }
 //</editor-fold>
 

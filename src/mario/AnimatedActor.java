@@ -49,6 +49,12 @@ public abstract class AnimatedActor extends Actor {
     private Animator animator;
     private int speed = 4;
 
+    public static int MIN_HEALTH = 0;
+    public static int MAX_HEALTH = 100;
+    private int health;
+    
+    private boolean alive = true;
+
     private ArrayList<String> frontWalkImages, backWalkImages, leftWalkImages, rightWalkImages, standImage;
     private String actionState;
 
@@ -58,7 +64,58 @@ public abstract class AnimatedActor extends Actor {
             ACTION_STATE_LEFT_WALK = "left_walk",
             ACTION_STATE_STOP = "stop";
 
+    
+    /**
+     * @return the health
+     */
+    public int getHealth() {
+        return health;
+    }
 
+    /**
+     * @param health the health to set
+     */
+    public void setHealth(int health) {
+        if (health < MIN_HEALTH) {
+            this.health = MIN_HEALTH;
+        } else if (health < MAX_HEALTH) {
+            this.health = MAX_HEALTH;
+        } else {
+            this.health = health;           
+        }
+        
+        setAlive(!(health == MIN_HEALTH));
+    }
+
+    /**
+     * @param health the health to set
+     */
+    public void addToHealth(int health) {
+        setHealth(this.health + health);
+    }
+
+    /**
+     * @return the alive
+     */
+    public boolean isDead() {
+        return !alive;
+    }
+
+    /**
+     * @return the alive
+     */
+    public boolean isAlive() {
+        return alive;
+    }
+
+    /**
+     * @param alive the alive to set
+     */
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+    
+    
     /**
      * @return the image
      */
@@ -239,6 +296,7 @@ public abstract class AnimatedActor extends Actor {
     public void setStandImage(ArrayList<String> standImage) {
         this.standImage = standImage;
     }
+
 
 
 }
