@@ -34,12 +34,12 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     private Image hell;
     private BufferedImage trollSpriteMap;
     private BufferedImage trollSpriteMap2;
-    Troll troll2;
+   // Troll troll2;
     Troll troll;
-    Troll troll3;
-    Troll troll4;
-    Troll troll5;
-    Troll troll6;
+//    Troll troll3;
+//    Troll troll4;
+//    Troll troll5;
+//    Troll troll6;
     Hero hero;
     boolean drawCastle;
     boolean drawField;
@@ -60,18 +60,18 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         
         
         troll = new Troll(new Point(700, 400), new Velocity(0, 0));
-        troll2 = new Troll(new Point(800, 400), new Velocity(0, 0));
-        troll3 = new Troll(new Point(600, 400), new Velocity(0, 0));
-        troll4 = new Troll(new Point(500, 400), new Velocity(0, 0));
-        troll5 = new Troll(new Point(400, 400), new Velocity(0, 0));
-        troll6 = new Troll(new Point(300, 400), new Velocity(0, 0));
+//        troll2 = new Troll(new Point(800, 400), new Velocity(0, 0));
+//        troll3 = new Troll(new Point(600, 400), new Velocity(0, 0));
+//        troll4 = new Troll(new Point(500, 400), new Velocity(0, 0));
+//        troll5 = new Troll(new Point(400, 400), new Velocity(0, 0));
+//        troll6 = new Troll(new Point(300, 400), new Velocity(0, 0));
         
         getActors().add(troll);
-        getActors().add(troll2);
-        getActors().add(troll3);
-        getActors().add(troll4);
-        getActors().add(troll5);
-        getActors().add(troll6);
+//        getActors().add(troll2);
+//        getActors().add(troll3);
+//        getActors().add(troll4);
+//        getActors().add(troll5);
+//        getActors().add(troll6);
         
         hero = new Hero(new Point(100, 400), new Velocity(0, 0));
         this.getActors().add(hero);
@@ -88,18 +88,29 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
     public void timerTaskHandler() {
         if ((troll.intersects(hero)) && 
                 !(troll.isChopping())) {
-            if (hero.getCenterOfMass().x <= troll.getCenterOfMass().x) {
-                this.troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
-            }else{
-                this.troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+            
+             if(hero.getCenterOfMass().x < troll.getCenterOfMass().x) {
+                 this.troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
+                 Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
+                  System.out.println("health is" + Hero.MAX_HEALTH);
                 
-            } 
+            }
+             else if(hero.getCenterOfMass().x > troll.getCenterOfMass().x) {
+                 this.troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+                 Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
+                  System.out.println("health is" + Hero.MAX_HEALTH);
+                
+            }
+             //else{
+             //   this.troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+                
+          //  } 
         
                 
             }
-            troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-            Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
-            System.out.println("health is" + Hero.MAX_HEALTH);
+//            troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+//            Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
+//            System.out.println("health is" + Hero.MAX_HEALTH);
         }
     
 
@@ -160,101 +171,101 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
             AudioPlayer.play("/resources/axe_chop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
             troll.stop();
-            troll2.setActionState(TrollActionState.AXE_CHOP_LEFT);
-            troll2.stop();
-            troll3.setActionState(TrollActionState.AXE_CHOP_LEFT);
-            troll3.stop();
-            troll4.setActionState(TrollActionState.AXE_CHOP_LEFT);
-            troll4.stop();
-            troll5.setActionState(TrollActionState.AXE_CHOP_LEFT);
-            troll5.stop();
-            troll6.setActionState(TrollActionState.AXE_CHOP_LEFT);
-            troll6.stop();
+//            troll2.setActionState(TrollActionState.AXE_CHOP_LEFT);
+//            troll2.stop();
+//            troll3.setActionState(TrollActionState.AXE_CHOP_LEFT);
+//            troll3.stop();
+//            troll4.setActionState(TrollActionState.AXE_CHOP_LEFT);
+//            troll4.stop();
+//            troll5.setActionState(TrollActionState.AXE_CHOP_LEFT);
+//            troll5.stop();
+//            troll6.setActionState(TrollActionState.AXE_CHOP_LEFT);
+//            troll6.stop();
         } else if (e.getKeyCode() == KeyEvent.VK_Z) {
             AudioPlayer.play("/resources/axe_chop.wav");
             troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
             troll.stop();
-            troll2.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-            troll2.stop();
-            troll3.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-            troll3.stop();
-            troll4.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-            troll4.stop();
-            troll5.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-            troll5.stop();
-            troll6.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-            troll6.stop();
+//            troll2.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+//            troll2.stop();
+//            troll3.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+//            troll3.stop();
+//            troll4.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+//            troll4.stop();
+//            troll5.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+//            troll5.stop();
+//            troll6.setActionState(TrollActionState.AXE_CHOP_RIGHT);
+//            troll6.stop();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             AudioPlayer.play("/resources/walk.wav");
             troll.setActionState(TrollActionState.WALK_RIGHT);
             troll.getVelocity().x = +2;
-            troll2.setActionState(TrollActionState.WALK_RIGHT);
-            troll2.getVelocity().x = +2;
-            troll3.setActionState(TrollActionState.WALK_RIGHT);
-            troll3.getVelocity().x = +2;
-            troll4.setActionState(TrollActionState.WALK_RIGHT);
-            troll4.getVelocity().x = +2;
-            troll5.setActionState(TrollActionState.WALK_RIGHT);
-            troll5.getVelocity().x = +2;
-            troll6.setActionState(TrollActionState.WALK_RIGHT);
-            troll6.getVelocity().x = +2;
+//            troll2.setActionState(TrollActionState.WALK_RIGHT);
+//            troll2.getVelocity().x = +2;
+//            troll3.setActionState(TrollActionState.WALK_RIGHT);
+//            troll3.getVelocity().x = +2;
+//            troll4.setActionState(TrollActionState.WALK_RIGHT);
+//            troll4.getVelocity().x = +2;
+//            troll5.setActionState(TrollActionState.WALK_RIGHT);
+//            troll5.getVelocity().x = +2;
+//            troll6.setActionState(TrollActionState.WALK_RIGHT);
+//            troll6.getVelocity().x = +2;
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             AudioPlayer.play("/resources/walk.wav");
             troll.getVelocity().x = -2;
             troll.setActionState(TrollActionState.WALK_LEFT);
-            troll2.getVelocity().x = -2;
-            troll2.setActionState(TrollActionState.WALK_LEFT);
-            troll3.getVelocity().x = -2;
-            troll3.setActionState(TrollActionState.WALK_LEFT);
-            troll4.getVelocity().x = -2;
-            troll4.setActionState(TrollActionState.WALK_LEFT);
-            troll5.getVelocity().x = -2;
-            troll5.setActionState(TrollActionState.WALK_LEFT);
-            troll6.getVelocity().x = -2;
-            troll6.setActionState(TrollActionState.WALK_LEFT);
+//            troll2.getVelocity().x = -2;
+//            troll2.setActionState(TrollActionState.WALK_LEFT);
+//            troll3.getVelocity().x = -2;
+//            troll3.setActionState(TrollActionState.WALK_LEFT);
+//            troll4.getVelocity().x = -2;
+//            troll4.setActionState(TrollActionState.WALK_LEFT);
+//            troll5.getVelocity().x = -2;
+//            troll5.setActionState(TrollActionState.WALK_LEFT);
+//            troll6.getVelocity().x = -2;
+//            troll6.setActionState(TrollActionState.WALK_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             troll.stop();
             troll.setActionState(TrollActionState.STAND_LEFT);
-            troll2.stop();
-            troll2.setActionState(TrollActionState.STAND_LEFT);
-            troll3.stop();
-            troll3.setActionState(TrollActionState.STAND_LEFT);
-            troll4.stop();
-            troll4.setActionState(TrollActionState.STAND_LEFT);
-            troll5.stop();
-            troll5.setActionState(TrollActionState.STAND_LEFT);
-            troll6.stop();
-            troll6.setActionState(TrollActionState.STAND_LEFT);
+//            troll2.stop();
+//            troll2.setActionState(TrollActionState.STAND_LEFT);
+//            troll3.stop();
+//            troll3.setActionState(TrollActionState.STAND_LEFT);
+//            troll4.stop();
+//            troll4.setActionState(TrollActionState.STAND_LEFT);
+//            troll5.stop();
+//            troll5.setActionState(TrollActionState.STAND_LEFT);
+//            troll6.stop();
+//            troll6.setActionState(TrollActionState.STAND_LEFT);
             
             
         } else if (e.getKeyCode() == KeyEvent.VK_X) {
             AudioPlayer.play("/resources/roar.wav");
             troll.stop();
             troll.setActionState(TrollActionState.ROAR_LEFT);
-            troll2.stop();
-            troll2.setActionState(TrollActionState.ROAR_LEFT);
-            troll3.stop();
-            troll3.setActionState(TrollActionState.ROAR_LEFT);
-            troll4.stop();
-            troll4.setActionState(TrollActionState.ROAR_LEFT);
-            troll5.stop();
-            troll5.setActionState(TrollActionState.ROAR_LEFT);
-            troll6.stop();
-            troll6.setActionState(TrollActionState.ROAR_LEFT);
+//            troll2.stop();
+//            troll2.setActionState(TrollActionState.ROAR_LEFT);
+//            troll3.stop();
+//            troll3.setActionState(TrollActionState.ROAR_LEFT);
+//            troll4.stop();
+//            troll4.setActionState(TrollActionState.ROAR_LEFT);
+//            troll5.stop();
+//            troll5.setActionState(TrollActionState.ROAR_LEFT);
+//            troll6.stop();
+//            troll6.setActionState(TrollActionState.ROAR_LEFT);
         } else if (e.getKeyCode() == KeyEvent.VK_B) {
             AudioPlayer.play("/resources/roar.wav");
             troll.stop();
             troll.setActionState(TrollActionState.ROAR_RIGHT);
-            troll2.stop();
-            troll2.setActionState(TrollActionState.ROAR_RIGHT);
-            troll3.stop();
-            troll3.setActionState(TrollActionState.ROAR_RIGHT);
-            troll4.stop();
-            troll4.setActionState(TrollActionState.ROAR_RIGHT);
-            troll5.stop();
-            troll5.setActionState(TrollActionState.ROAR_RIGHT);
-            troll6.stop();
-            troll6.setActionState(TrollActionState.ROAR_RIGHT);
+//            troll2.stop();
+//            troll2.setActionState(TrollActionState.ROAR_RIGHT);
+//            troll3.stop();
+//            troll3.setActionState(TrollActionState.ROAR_RIGHT);
+//            troll4.stop();
+//            troll4.setActionState(TrollActionState.ROAR_RIGHT);
+//            troll5.stop();
+//            troll5.setActionState(TrollActionState.ROAR_RIGHT);
+//            troll6.stop();
+//            troll6.setActionState(TrollActionState.ROAR_RIGHT);
 
 //        } else if (e.getKeyCode() == KeyEvent.VK_P) {
 //            
@@ -264,16 +275,16 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
         } else if (e.getKeyCode() == KeyEvent.VK_V) {
             troll.stop();
             troll.setActionState(TrollActionState.STAND_RIGHT);
-            troll2.stop();
-            troll2.setActionState(TrollActionState.STAND_RIGHT);
-            troll3.stop();
-            troll3.setActionState(TrollActionState.STAND_RIGHT);
-            troll4.stop();
-            troll4.setActionState(TrollActionState.STAND_RIGHT);
-            troll5.stop();
-            troll5.setActionState(TrollActionState.STAND_RIGHT);
-            troll6.stop();
-            troll6.setActionState(TrollActionState.STAND_RIGHT);
+//            troll2.stop();
+//            troll2.setActionState(TrollActionState.STAND_RIGHT);
+//            troll3.stop();
+//            troll3.setActionState(TrollActionState.STAND_RIGHT);
+//            troll4.stop();
+//            troll4.setActionState(TrollActionState.STAND_RIGHT);
+//            troll5.stop();
+//            troll5.setActionState(TrollActionState.STAND_RIGHT);
+//            troll6.stop();
+//            troll6.setActionState(TrollActionState.STAND_RIGHT);
         }
     }
     
