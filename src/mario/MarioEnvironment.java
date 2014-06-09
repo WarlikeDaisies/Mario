@@ -26,7 +26,7 @@ import java.awt.image.BufferedImage;
  */
 class MarioEnvironment extends Environment implements MouseMotionListener {
     
-    private int characterHealth = 10;
+    private int characterHealth = 100;
     private Level level = Level.TitleScreen;
     private Image horde;
     private Image castle;
@@ -92,25 +92,25 @@ class MarioEnvironment extends Environment implements MouseMotionListener {
              if(hero.getCenterOfMass().x < troll.getCenterOfMass().x) {
                  this.troll.setActionState(TrollActionState.AXE_CHOP_LEFT);
                  Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
-                  System.out.println("health is" + Hero.MAX_HEALTH);
+                  System.out.println("health is " + Hero.MAX_HEALTH);
                 
             }
              else if(hero.getCenterOfMass().x > troll.getCenterOfMass().x) {
                  this.troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
                  Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
-                  System.out.println("health is" + Hero.MAX_HEALTH);
+                  System.out.println("health is " + Hero.MAX_HEALTH);
                 
-            }
-             //else{
-             //   this.troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-                
-          //  } 
+            }else{
+             this.troll.setActionState(TrollActionState.WALK_LEFT);
+             }
         
+           if (hero.isDead());{
+                    
+                    System.out.println("Dead yo");
+               
                 
+                }    
             }
-//            troll.setActionState(TrollActionState.AXE_CHOP_RIGHT);
-//            Hero.MAX_HEALTH = Hero.MAX_HEALTH - 10;
-//            System.out.println("health is" + Hero.MAX_HEALTH);
         }
     
 

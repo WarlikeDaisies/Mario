@@ -78,13 +78,13 @@ public abstract class AnimatedActor extends Actor {
     public void setHealth(int health) {
         if (health < MIN_HEALTH) {
             this.health = MIN_HEALTH;
-        } else if (health < MAX_HEALTH) {
+        } else if (health > MAX_HEALTH) {
             this.health = MAX_HEALTH;
         } else {
             this.health = health;           
         }
         
-        setAlive(!(health == MIN_HEALTH));
+        setAlive(!(health <= MIN_HEALTH));
     }
 
     /**
